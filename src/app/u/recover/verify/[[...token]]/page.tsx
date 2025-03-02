@@ -81,7 +81,7 @@ const Sent : React.FC = (_props) => {
             
             <Button variant={Variant.Medium} type={`submit`} as={`mt:25 w:100%!`} fx={{ ...anim, delay: 0.35 }}>Verify</Button>
 
-            { resend && <Box as={`mt:25 s:16`} fx={{ ...anim, delay: 0.4 }}>Code not received? <Link href={`/u/recover?resend=1`} className={Style.Link}>Re-send code</Link></Box> }
+            { resend && <Box as={`mt:25 s:16`} fx={{ ...anim, delay: 0.4 }}>Code not received? <Link href={`/u/recover?resend=1` as any} className={Style.Link}>Re-send code</Link></Box> }
 
         </Form>}
     </Box>

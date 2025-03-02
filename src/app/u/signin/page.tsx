@@ -56,8 +56,8 @@ const Signin : React.FC = (_props) => {
             
             <Button variant={Variant.Medium} type={`submit`} as={`w:100%! mt:25`} fx={{ ...anim, delay: 0.35 }}>Sign in</Button>
 
-            <Text as={`mt:35`} fx={{ ...anim, delay: 0.4 }}><Link className={css(`${Style.Link} bold`)} href={`/u/recover`}>Forgot Password?</Link></Text>
-            <Text fx={{ ...anim, delay: 0.45 }}>New here? <Link className={css(`${Style.Link} bold`)} href={`/u/signup`}>Create account</Link></Text>
+            <Text as={`mt:35`} fx={{ ...anim, delay: 0.4 }}><Link className={css(`${Style.Link} bold`)} href={`/u/recover` as any}>Forgot Password?</Link></Text>
+            <Text fx={{ ...anim, delay: 0.45 }}>New here? <Link className={css(`${Style.Link} bold`)} href={`/u/signup` as any}>Create account</Link></Text>
 
         </Form>
         <Sheet ref={toast} />

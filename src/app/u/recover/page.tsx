@@ -19,7 +19,7 @@ const Recover : React.FC = (_props) => {
     const router = useRouter();
 
     const onSuccess = (resp: dynamicObject) => {
-        router.push(`/u/recover/verify/${resp.token}/${encodeURIComponent(resp.email)}`)
+        router.push(`/u/recover/verify/${resp.token}/${encodeURIComponent(resp.email)}` as any)
     }
 
     useEffect(() => {}, [])
@@ -40,8 +40,8 @@ const Recover : React.FC = (_props) => {
             
             <Button variant={Variant.Medium} type={`submit`} as={`mt:25 w:100%!`} fx={{ ...anim, delay: 0.35 }}>Continue</Button>
 
-            <Text as={`mt:35`} fx={{ ...anim, delay: 0.45 }}>Already have an account? <Link className={css(`${Style.Link} bold`)} href={`/u/signin`}>Sign in here</Link></Text>
-            <Text fx={{ ...anim, delay: 0.45 }}>New here? <Link className={css(`${Style.Link} bold`)} href={`/u/signup`}>Create account</Link></Text>
+            <Text as={`mt:35`} fx={{ ...anim, delay: 0.45 }}>Already have an account? <Link className={css(`${Style.Link} bold`)} href={`/u/signin` as any}>Sign in here</Link></Text>
+            <Text fx={{ ...anim, delay: 0.45 }}>New here? <Link className={css(`${Style.Link} bold`)} href={`/u/signup` as any}>Create account</Link></Text>
 
         </Form>
     </Box>

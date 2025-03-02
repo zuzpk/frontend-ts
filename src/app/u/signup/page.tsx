@@ -67,7 +67,7 @@ const Signup : React.FC = (_props) => {
             <Button type={`submit`} size={Size.Medium} as={`w:100%! mt:25`} fx={{ ...anim, delay: 0.35 }}>Create Account</Button>
 
             <Text as={`mv:35`} fx={{ ...anim, delay: 0.4 }}>By clicking "Create account", you agree to the <Link className={Style.Link} href={`/help/terms` as any}>{APP_NAME} TOS</Link> and <Link className={Style.Link} href={`/help/privacy` as any}>Privacy Policy.</Link></Text>
-            <Text fx={{ ...anim, delay: 0.45 }}>Already have an account? <Link className={Style.Link} href={`/u/signin`}>Sign in here</Link></Text>
+            <Text fx={{ ...anim, delay: 0.45 }}>Already have an account? <Link className={Style.Link} href={`/u/signin` as any}>Sign in here</Link></Text>
 
         </Form>
         <Sheet ref={toast} />

@@ -24,7 +24,7 @@ const Update : React.FC = (_props) => {
 
     useEffect(() => {
         if ( !token ){
-            router.push(`/u/recover?resend=2`)
+            router.push(`/u/recover?resend=2` as any)
         }
     }, [])
 
