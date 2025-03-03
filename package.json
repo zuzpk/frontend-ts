@@ -3,6 +3,7 @@
   "version": "0.1.7",
   "private": true,
   "scripts": {
+    "css-fix": "sudo npm i -g style-loader css-loader sass-loader",
     "dev": "concurrently \"zuzjs\" \"node zuz.js mode=dev dir=.next.dev\" \"next dev -p 3000\"",
     "build": "node zuz.js mode=prod dir=.next.build && next build",
     "start": "next start -p 3000",
@@ -24,9 +25,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "concurrently": "^9.1.2",
+    "css-loader": "^7.1.2",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "sass": "^1.85.1",
+    "style-loader": "^4.0.0",
     "typescript": "^5"
   }
 }
