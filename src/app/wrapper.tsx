@@ -1,5 +1,5 @@
 "use client"
-import { AppStore } from "@/store";
+import { AppStore, Store } from "@/store";
 import createStore from "@zuzjs/store";
 import { Box } from "@zuzjs/ui";
 import "@zuzjs/ui/styles";
@@ -15,8 +15,8 @@ const Wrapper = ({ children } : Readonly<{ children: ReactNode; }>) => {
 
 const Main = ({ children } : Readonly<{ children: ReactNode; }>) => {
 
-    const { Provider } = createStore(`app`, AppStore.App)
-    const { Provider: UserProvider } = createStore(`user`, AppStore.User)
+    const { Provider } = createStore(Store.App, AppStore.App)
+    const { Provider: UserProvider } = createStore(Store.User, AppStore.User)
     
     useEffect(() => {}, []);
 

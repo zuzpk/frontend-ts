@@ -1,5 +1,6 @@
 "use client"
 import { APP_NAME, APP_VERSION, LocalDB } from "@/config"
+import { Store } from "@/store"
 import { User } from "@/types"
 import { useStore } from "@zuzjs/store"
 import { Avatar, Box, Button, ColorScheme, ContextMenu, ContextMenuHandler, css, Icon, Image, SheetHandler, Spinner, Text, TRANSITION_CURVES, TRANSITIONS, useContextMenu, useDB, useDelayed, withPost } from "@zuzjs/ui"
@@ -9,7 +10,7 @@ import { useCallback, useRef } from "react"
 
 const Header = () => {
 
-    const me = useStore<User>(`user`)
+    const me = useStore<User>(Store.User)
     const toast = useRef<SheetHandler>(null)
     const mounted = useDelayed()
     const pathname = usePathname()
@@ -17,7 +18,7 @@ const Header = () => {
     const userMenu = useRef<ContextMenuHandler>(null)
     const userMenuParent = useRef<HTMLDivElement>(null)
     const { show: showUserMenu } = useContextMenu(userMenu);
-    const { remove } = useDB(LocalDB.you)
+    const { remove } = useDB(LocalDB.You)
 
     const signOut = useCallback(() => {
         me.dispatch({ loading: true });

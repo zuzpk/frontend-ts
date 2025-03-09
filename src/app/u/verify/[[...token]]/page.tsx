@@ -27,7 +27,9 @@ const Verify : React.FC = ( _props) => {
     }
 
     const autoVerify = () => {
-        withPost(
+        withPost<{
+            name: string
+        }>(
             `/@/u/verify`,
             { token }
         )

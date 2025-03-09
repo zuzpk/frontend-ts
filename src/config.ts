@@ -1,5 +1,6 @@
-import packageJson from "../package.json"
 import { type IDBOptions } from "@zuzjs/ui"
+import packageJson from "../package.json"
+import { DB } from "./types"
 
 export const APP_NAME = "Zuz"
 export const APP_TAGLINE = "ZuzJS Frontend"
@@ -14,12 +15,12 @@ export const ADMIN_EMAIL = `hello@zuz.com.pk`;
 export const REDIRECT_AFTER_OAUTH = `/`;
 
 export const LocalDB = {
-    you: {
+    You: {
         name: APP_NAME.toLowerCase(),
         version: +APP_VERSION.replace(/\./g, ``),
         meta: [
             {
-                name: `you`,
+                name: DB.You,
                 config: { keyPath: "ID", autoIncrement: false },
                 schema: [
                     { name: "ID", unique: true },

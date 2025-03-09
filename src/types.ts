@@ -22,7 +22,5 @@ export enum UserStatus {
 }
 
 export enum DB {
-    You = "you",
-    Tree = "tree",
-    Drive = "drive"
+    You = "you"
 }

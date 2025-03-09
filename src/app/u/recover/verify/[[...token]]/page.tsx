@@ -30,7 +30,9 @@ const Sent : React.FC = (_props) => {
     }
 
     const autoVerify = () => {
-        withPost(
+        withPost<{
+            token: string
+        }>(
             `/@/u/verify`,
             { token }
         )

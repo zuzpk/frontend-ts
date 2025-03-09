@@ -19,7 +19,7 @@ const Signup : React.FC = (_props) => {
     }), [mounted])
     const { loading, ID, dispatch } = useStore<typeof AppStore.User>(`user`)
     const router = useRouter();
-    const { insert } = useDB(LocalDB.you)
+    const { insert } = useDB(LocalDB.You)
     const toast = useRef<SheetHandler>(null)
 
     const onSuccess = useCallback((resp: dynamicObject) => {
