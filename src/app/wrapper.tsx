@@ -1,7 +1,8 @@
 "use client"
+import { FB_PIXEL_ID, GA_MEASUREMENT_ID } from "@/config";
 import { AppStore, Store } from "@/store";
 import createStore from "@zuzjs/store";
-import { Box } from "@zuzjs/ui";
+import { Box, useFacebookPixel, useGoogleTagManager } from "@zuzjs/ui";
 import "@zuzjs/ui/styles";
 import { ReactNode, useEffect } from "react";
 import Header from "./header";
@@ -18,7 +19,13 @@ const Main = ({ children } : Readonly<{ children: ReactNode; }>) => {
     const { Provider } = createStore(Store.App, AppStore.App)
     const { Provider: UserProvider } = createStore(Store.User, AppStore.User)
     
-    useEffect(() => {}, []);
+    const { trackPageView: sendGTPageView } = useGoogleTagManager(GA_MEASUREMENT_ID!)
+    const { trackPageView: sendFBPageView } = useFacebookPixel(FB_PIXEL_ID!)
+
+    useEffect(() => {
+        sendGTPageView()
+        sendFBPageView()
+    }, []);
 
     return <Provider>
         <UserProvider>

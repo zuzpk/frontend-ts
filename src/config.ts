@@ -9,7 +9,9 @@ export const APP_URL = "http://cms.zuz.com.pk/"
 export const API_URL = "http://localhost:3001/@/"
 export const APP_VERSION = packageJson.version
 export const SESS_ID = `ui`
-export const GA_MEASUREMENT_ID = "__";
+export const GA_MEASUREMENT_ID : string | null = null;
+export const FB_PIXEL_ID : string | null = null;
+
 export const ADMIN_EMAIL = `hello@zuz.com.pk`;
 
 export const REDIRECT_AFTER_OAUTH = `/`;
