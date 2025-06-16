@@ -16,7 +16,10 @@ fs.writeFileSync(backupPath, JSON.stringify(packageJson, null, 2))
 const uiPack = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "packages", "ui", "package.json")))
 /** @zuzjs/store package.json */
 const storePack = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "packages", "store", "package.json")))
+/** @zuzjs/core package.json */
+const corePack = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "packages", "core", "package.json")))
 
+packageJson.dependencies["@zuzjs/core"] = `^${corePack.version}`
 packageJson.dependencies["@zuzjs/ui"] = `^${uiPack.version}`
 packageJson.dependencies["@zuzjs/store"] = `^${storePack.version}`
 
