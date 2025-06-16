@@ -2,7 +2,7 @@
 import { FB_PIXEL_ID, GA_MEASUREMENT_ID } from "@/config";
 import { AppStore, Store } from "@/store";
 import createStore from "@zuzjs/store";
-import { Box, useFacebookPixel, useGoogleTagManager } from "@zuzjs/ui";
+import { Box, ToastProvider, useFacebookPixel, useGoogleTagManager } from "@zuzjs/ui";
 import "@zuzjs/ui/styles";
 import { ReactNode, useEffect } from "react";
 import Header from "./header";
@@ -14,7 +14,7 @@ const Wrapper = ({ children } : Readonly<{ children: ReactNode; }>) => {
 
 }
 
-const Main = ({ children } : Readonly<{ children: ReactNode; }>) => {
+const Main = ({ children } : { children: ReactNode }) => {
 
     const { Provider } = createStore(Store.App, AppStore.App)
     const { Provider: UserProvider } = createStore(Store.User, AppStore.User)
@@ -27,15 +27,17 @@ const Main = ({ children } : Readonly<{ children: ReactNode; }>) => {
         sendFBPageView()
     }, []);
 
-    return <Provider>
-        <UserProvider>
-            <Box as={`app flex minH:100vh cols`}>
-                <Authenticate />
-                <Header />
-                {children as React.ReactNode}
-            </Box>
-        </UserProvider>
-    </Provider>
+    return <ToastProvider>
+        <Provider>
+            <UserProvider>
+                <Box as={`app flex minH:100vh cols`}>
+                    <Authenticate />
+                    <Header />
+                    {children}
+                </Box>
+            </UserProvider>
+        </Provider>
+    </ToastProvider>
 
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "frontend-ts",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": true,
   "scripts": {
     "css-fix": "sudo npm i -g style-loader css-loader sass-loader",
@@ -12,24 +12,25 @@
   },
   "dependencies": {
     "@types/js-cookie": "3.0.6",
-    "@zuzjs/store": "^0.1.5",
-    "@zuzjs/ui": "^0.8.1",
+    "@zuzjs/core": "workspace:*",
+    "@zuzjs/store": "^0.1.6",
+    "@zuzjs/ui": "^0.8.8",
     "js-cookie": "^3.0.5",
-    "next": "15.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@eslint/eslintrc": "^3.3.1",
+    "@types/node": "^24.0.3",
+    "@types/react": "^19.1.7",
+    "@types/react-dom": "^19.1.6",
     "concurrently": "^9.1.2",
     "css-loader": "^7.1.2",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.6",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "15.3.3",
     "sass": "^1.85.1",
     "style-loader": "^4.0.0",
-    "typescript": "^5"
+    "typescript": "^5.8.3"
   }
 }
