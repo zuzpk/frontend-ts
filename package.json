@@ -1,6 +1,6 @@
 {
   "name": "frontend-ts",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "css-fix": "sudo npm i -g style-loader css-loader sass-loader",
@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@types/js-cookie": "3.0.6",
-    "@zuzjs/core": "^0.2.2",
+    "@zuzjs/core": "^0.2.3",
     "@zuzjs/store": "^0.1.6",
-    "@zuzjs/ui": "^0.9.4",
+    "@zuzjs/ui": "^0.9.6",
     "js-cookie": "^3.0.5",
     "next": "15.3.4",
     "react": "^19.1.0",
