@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       { source: "/@/:method*", destination: "${API_URL}:method*" }
     ]
   },
+  typedRoutes: true,
   distDir: "${bistDir || distDir || `.next`}",
   cleanDistDir: true,
   poweredByHeader: false,
@@ -40,8 +41,7 @@ const nextConfig: NextConfig = {
 
   // Experimental TypeScript features
   experimental: {
-    // Enable type-checked routing
-    typedRoutes: true,
+    
     
     // Enable server actions
     serverActions: {
