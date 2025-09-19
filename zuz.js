@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       { source: "/@/:method*", destination: "${API_URL}:method*" }
     ]
   },
-  typedRoutes: true,
+  typedRoutes: false,
   distDir: "${bistDir || distDir || `.next`}",
   cleanDistDir: true,
   poweredByHeader: false,

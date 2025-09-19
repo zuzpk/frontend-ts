@@ -1,6 +1,6 @@
 {
   "name": "frontend-ts",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "scripts": {
     "css-fix": "sudo npm i -g style-loader css-loader sass-loader",
@@ -16,15 +16,15 @@
     "@zuzjs/store": "^0.1.6",
     "@zuzjs/ui": "^0.9.7",
     "js-cookie": "^3.0.5",
-    "next": "15.5.2",
+    "next": "15.5.3",
     "react": "^19.1.1",
     "react-dom": "19.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@types/node": "24.3.1",
-    "@types/react": "19.1.12",
-    "@types/react-dom": "^19.1.6",
+    "@types/node": "24.5.2",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "19.1.9",
     "concurrently": "^9.1.2",
     "css-loader": "^7.1.2",
     "eslint": "9.35.0",

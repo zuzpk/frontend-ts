@@ -5,6 +5,7 @@ import { Box, Button, dynamicObject, Form, FORMVALIDATION, Password, Text, TRANS
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useMemo, useState } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Update : React.FC = (_props) => {
 
     const mounted = useMounted()
@@ -24,7 +25,7 @@ const Update : React.FC = (_props) => {
 
     useEffect(() => {
         if ( !token ){
-            router.push(`/u/recover?resend=2` as any)
+            router.push(`/u/recover?resend=2`)
         }
     }, [])
 

@@ -1,12 +1,12 @@
 import { Box, Button, Icon, Text, TRANSITION_CURVES, TRANSITIONS, useDelayed, Variant } from '@zuzjs/ui';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 type DoneProps = {
     type: `error` | `success`,
     title?: string | string[],
     message?: string | string[],
     action?: {
-        label: ReactNode,
+        label: string,
         on: () => void
     }
 }
@@ -45,7 +45,7 @@ const Done : React.FC<DoneProps> = ({ type, title, message, action }) => {
         {action && <Box as={`mt:25`} fx={{ ..._animation, delay: .5 }}>
             <Button onClick={() => {
                 if ( action?.on ) action.on()
-            }} variant={Variant.Small}>{action?.label || `Re-try`}</Button>
+            }} variant={Variant.Small}>{action?.label ?? `Re-try`}</Button>
         </Box>}
     
     </Box>

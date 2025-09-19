@@ -1,15 +1,17 @@
 "use client"
-import Done from '@/app/done';
-import Style from '@/ui';
-import { useStore } from '@zuzjs/store';
-import { Box, Button, Cover, dynamicObject, Form, PinInput, Sheet, SheetHandler, Text, TRANSITION_CURVES, TRANSITIONS, useMounted, Variant, withPost } from '@zuzjs/ui';
-import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Done from '@/app/done'
+import Style from '@/ui'
+import { useStore } from '@zuzjs/store'
+import { Box, Button, Cover, dynamicObject, Form, PinInput, Sheet, SheetHandler, Text, TRANSITION_CURVES, TRANSITIONS, useMounted, Variant } from '@zuzjs/ui'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { withPost } from "@zuzjs/core"
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Sent : React.FC = (_props) => {
 
-    const [ token, em ] = useParams().token ? useParams().token as [] : [ `token`, `em` ]
+    const [ token, em ] = useParams().token ?? [ `token`, `em` ]
     const [ resend, setSend ] = useState(false)
     const [ verifying, setVerifying ] = useState(em ? false : true)
     const [ done, setDone ] = useState<number | null>(0)
@@ -26,7 +28,7 @@ const Sent : React.FC = (_props) => {
 
     const onSuccess = (resp: dynamicObject) => {
         setVerifying(false)
-        dispatch({ token: resp.token }).then(() => router.push(`/u/recover/update?v=${Date.now()}` as any))
+        dispatch({ token: resp.token }).then(() => router.push(`/u/recover/update?v=${Date.now()}`))
     }
 
     const autoVerify = () => {
@@ -83,7 +85,7 @@ const Sent : React.FC = (_props) => {
             
             <Button variant={Variant.Medium} type={`submit`} as={`mt:25 w:100%!`} fx={{ ...anim, delay: 0.35 }}>Verify</Button>
 
-            { resend && <Box as={`mt:25 s:16`} fx={{ ...anim, delay: 0.4 }}>Code not received? <Link href={`/u/recover?resend=1` as any} className={Style.Link}>Re-send code</Link></Box> }
+            { resend && <Box as={`mt:25 s:16`} fx={{ ...anim, delay: 0.4 }}>Code not received? <Link href={`/u/recover?resend=1`} className={Style.Link}>Re-send code</Link></Box> }
 
         </Form>}
     </Box>

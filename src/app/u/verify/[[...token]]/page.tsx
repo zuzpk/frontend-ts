@@ -1,14 +1,16 @@
 "use client"
-import Done from '@/app/done';
-import Style from '@/ui';
-import { Box, Button, Cover, dynamicObject, Form, PinInput, Sheet, SheetHandler, Text, TRANSITION_CURVES, TRANSITIONS, useMounted, Variant, withPost } from '@zuzjs/ui';
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Done from '@/app/done'
+import Style from '@/ui'
+import { Box, Button, Cover, Form, PinInput, Sheet, SheetHandler, Text, TRANSITION_CURVES, TRANSITIONS, useMounted, Variant } from '@zuzjs/ui'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { withPost,dynamic } from "@zuzjs/core"
 
-const Verify : React.FC = ( _props) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Verify : React.FC = (_props) => {
 
-    const [ token, em ] = useParams().token ? useParams().token as [] : [ `token`, `em` ]
+    const [ token, em ] = useParams().token ?? [ `token`, `em` ]
     const [ resend, setSend ] = useState(false)
     const [ verifying, setVerifying ] = useState(em ? false : true)
     const [ done, setDone ] = useState<number | null>(0)
@@ -21,7 +23,7 @@ const Verify : React.FC = ( _props) => {
     }), [mounted])
     const toast = useRef<SheetHandler | null>(null)
 
-    const onSuccess = (resp : dynamicObject) => {
+    const onSuccess = (resp : dynamic) => {
         setVerifying(false)
         setDone(resp.name)
     }
@@ -80,7 +82,7 @@ const Verify : React.FC = ( _props) => {
             
             <Button variant={Variant.Medium} type={`submit`} as={`mt:25 w:100%!`} fx={{ ...anim, delay: 0.35 }}>Verify</Button>
 
-            { resend && <Box as={`mt:25 s:16`} fx={{ ...anim, delay: 0.4 }}>Code not received? <Link href={`/u/signup?resend=1` as any} className={Style.Link}>Re-send code</Link></Box> }
+            { resend && <Box as={`mt:25 s:16`} fx={{ ...anim, delay: 0.4 }}>Code not received? <Link href={`/u/signup?resend=1`} className={Style.Link}>Re-send code</Link></Box> }
 
         </Form>}
     </Box>

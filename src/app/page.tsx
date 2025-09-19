@@ -1,5 +1,5 @@
 "use client"
-import { Box, Search, Select, Text } from "@zuzjs/ui";
+import { Box, Text } from "@zuzjs/ui";
 import { useEffect } from "react";
 
 export default function Home() {

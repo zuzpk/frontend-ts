@@ -8,7 +8,7 @@ type ErrorProps = {
     title?: string | string[],
     message?: string | string[],
     action?: {
-        label: ReactNode,
+        label: string,
         on: () => void
     }
 }
