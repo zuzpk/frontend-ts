@@ -14,7 +14,7 @@
     "@types/js-cookie": "3.0.6",
     "@zuzjs/core": "^0.2.4",
     "@zuzjs/store": "^0.1.6",
-    "@zuzjs/ui": "^0.9.7",
+    "@zuzjs/ui": "^0.9.8",
     "js-cookie": "^3.0.5",
     "next": "15.5.3",
     "react": "^19.1.1",
