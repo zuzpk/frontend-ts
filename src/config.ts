@@ -36,3 +36,5 @@ export const LocalDB = {
         ]
     } satisfies IDBOptions
 }
+
+export const VAPID_PUBLIC_KEY = `BECsVJoeWAxJO4zcmvgIUyIielyhcvoel-Kth3sIlT4v1J_WWZsN89L2xoHUjR_hoRlK85d3kYJLuPsc4H21ypc`

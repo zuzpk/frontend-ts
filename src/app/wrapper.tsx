@@ -7,6 +7,7 @@ import "@zuzjs/ui/styles";
 import { ReactNode, useEffect } from "react";
 import Header from "./header";
 import Authenticate from "./oauth";
+import PushNotifications from "./webpush";
 
 const Wrapper = ({ children } : Readonly<{ children: ReactNode; }>) => {
 
@@ -32,6 +33,7 @@ const Main = ({ children } : { children: ReactNode }) => {
             <UserProvider>
                 <Box as={`app flex minH:100vh cols`}>
                     <Authenticate />
+                    <PushNotifications />
                     <Header />
                     {children}
                 </Box>
