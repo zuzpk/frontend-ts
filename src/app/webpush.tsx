@@ -23,7 +23,7 @@ const PushNotifications : React.FC = (_props) => {
                 withPost<{
                     kind: string
                 }>(
-                    `/@/u/push_oauth`,
+                    `/_/u/push_oauth`,
                     { token: meta }
                 )
                 .then(() => {})
@@ -33,7 +33,21 @@ const PushNotifications : React.FC = (_props) => {
         }
     }, [permission, subscribe])
 
-    return <></>
+    useEffect(() => {
+        const handler = (e: MessageEvent) => {
+            if (e.data?.type === 'PUSH_NOTIFICATION') {
+                const audio = new Audio(e.data.soundUrl);
+                audio.play().catch(() => {
+            });
+        }
+        };
+
+        navigator.serviceWorker?.addEventListener('message', handler);
+        return () => navigator.serviceWorker?.removeEventListener('message', handler);
+    }, []);
+
+    return null
+
 }
 
 export default PushNotifications;
