@@ -13,7 +13,7 @@ const [ d, distDir, bistDir ] = process.argv.find(v => v.indexOf('dir=') > -1).s
 return `import type { NextConfig } from "next";
 import path from "path";
 const nextConfig: NextConfig = {
-
+  reactCompiler: true,
   async rewrites(){
     return [
       { source: "/@/:method*/:action*", destination: "${API_URL}:method*/:action*" },
