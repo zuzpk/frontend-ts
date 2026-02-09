@@ -2,7 +2,7 @@
 "use client"
 import { VAPID_PUBLIC_KEY } from '@/config';
 import { withPost } from '@zuzjs/core';
-import { usePushNotifications } from '@zuzjs/ui';
+import { usePushNotifications } from '@zuzjs/hooks';
 import React, { useEffect } from 'react';
 
 const PushNotifications : React.FC = (_props) => {

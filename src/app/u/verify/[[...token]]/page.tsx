@@ -1,7 +1,6 @@
 "use client"
 import Done from '@/app/done'
-import Style from '@/ui'
-import { Box, Button, Cover, Form, PinInput, Sheet, SheetHandler, Text, TRANSITION_CURVES, TRANSITIONS, useMounted, Variant } from '@zuzjs/ui'
+import { Box, Button, Cover, css, Form, Group, PinInput, Sheet, SheetHandler, Text, TRANSITION_CURVES, TRANSITIONS, useToast, Variant } from '@zuzjs/ui'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
@@ -14,14 +13,7 @@ const Verify : React.FC = (_props) => {
     const [ resend, setSend ] = useState(false)
     const [ verifying, setVerifying ] = useState(em ? false : true)
     const [ done, setDone ] = useState<number | null>(0)
-    const mounted = useMounted()
-    const anim = useMemo(() => ({
-        transition: TRANSITIONS.SlideInTop,
-        curve: TRANSITION_CURVES.Spring,
-        when: mounted,
-        duration: 0.5
-    }), [mounted])
-    const toast = useRef<SheetHandler | null>(null)
+    const toast = useToast()
 
     const onSuccess = (resp : dynamic) => {
         setVerifying(false)
@@ -39,7 +31,7 @@ const Verify : React.FC = (_props) => {
         .catch(err => {
             setVerifying(false)
             setDone(err.code == 101 ? 101 : null)
-            toast.current!.error(err.message || `Failed to verify account`)
+            toast.error(err.message || `Failed to verify account`)
         })
     }
 
@@ -54,7 +46,8 @@ const Verify : React.FC = (_props) => {
 
     }, [])
 
-    return <><Box as={`minH:calc[100vh - 70px] flex aic jcc rel`}>
+    return <Group
+        as={`h:100vh w:50vw bg:$surface abs abc flex aic jcc p:150 cols gap:15`}>
         <Cover when={verifying} message={`verfying...`} />
         { done ? done == 101 ? <Done 
             type={`error`}
@@ -74,20 +67,18 @@ const Verify : React.FC = (_props) => {
             errors={{
                 otp: `OTP Code is required`,
             }}
-            as={`flex aic jcc cols w:350 gap:12`}>
+            as={`flex cols w:320 gap:12`}>
             
-            <Text fx={{ ...anim, delay: 0.1 }} as={`s:18 mb:10 tac`}>We have sent you a verification code{em ? <> to <b>{decodeURIComponent(em)}</b></> : null}</Text>
+            <Text as={`s:18 mb:10`}>We have sent you a verification code{em ? <> to <b>{decodeURIComponent(em)}</b></> : null}</Text>
 
-            <PinInput name={`otp`} as={`s:40! b:900`} fx={{ ...anim, delay: 0.25 }} length={6} variant={Variant.Medium} required />
+            <PinInput name={`otp`} as={`s:xl! b:900`} length={6} required />
             
-            <Button variant={Variant.Medium} type={`submit`} as={`mt:25 w:100%!`} fx={{ ...anim, delay: 0.35 }}>Verify</Button>
+            <Button type={`submit`} as={`mt:25 bold`}>Verify</Button>
 
-            { resend && <Box as={`mt:25 s:16`} fx={{ ...anim, delay: 0.4 }}>Code not received? <Link href={`/u/signup?resend=1`} className={Style.Link}>Re-send code</Link></Box> }
+            { resend && <Box as={`mt:25 s:16`}>Code not received? <Link href={`/u/signup?resend=1`} className={css(`tdn bold &hover(tdu)`)}>Re-send code</Link></Box> }
 
         </Form>}
-    </Box>
-    <Sheet ref={toast} />
-    </>
+    </Group>
 }
 
 export default Verify;

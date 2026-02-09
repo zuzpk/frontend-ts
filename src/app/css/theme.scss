@@ -3,9 +3,7 @@ $vars: (
     primary: #bc2a2b,
     primary-hover: #d73b3b,
     secondary: #af48c2,
-    radius: 10px,    
-    text-size: 16px,
-
+    
     password-toggle-radius: var(--radius),
     input-radius-md: var(--radius),
     button-radius-md: var(--radius),
@@ -14,22 +12,31 @@ $vars: (
 );
 
 $light: (
-    body: #e6eaf2,
-    text: #111,
-    btn-text: #fff,
-    input: #fff,
-    cover-bg: rgba(230,234,242,0.8),
-
-    button-link: #fff,
-    button-link-border: #fff,
+    background: #e6eaf2,
+    surface: #fff,
+    surface-hover: #f6f6f6,
+    muted: #fff,
+    muted-hover: #f6f6f6,
+    text-primary: #111,
+    text-primary-hover: #222,
+    text-secondary: #444,
+    text-secondary-hover: #666,
+    border-primary: #ddd,
+    border-secondary: #eee,
 );
 
 $dark: (
-    body: #222,
-    cover-bg: rgba(34,34,34,0.8),
-    text: #e6eaf2,
-    button-link: #444,
-    button-link-border: #555,
+    background: #131313,
+    surface: #1e1f20,
+    surface-hover: #292a2c,
+    muted: #272829,
+    muted-hover: #2e2f31,
+    text-primary: #fff,
+    text-primary-hover: #f6f6f6,
+    text-secondary: #e3e3e3,
+    text-secondary-hover: #d8d8d8,
+    border-primary: #333,
+    border-secondary: #444,
 );
 
 body {
@@ -56,8 +63,9 @@ body {
 }
 
 html, body {
-  background: var(--body);
-  color: var(--text);
+  background: var(--background);
+  color: var(--text-primary);
+  font-size: var(--text-md);
 }
 
-a{ color: var(--text); user-select: none; }
+a{ color: var(--text-primary); user-select: none; }

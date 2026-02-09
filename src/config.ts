@@ -1,4 +1,4 @@
-import { type IDBOptions } from "@zuzjs/ui"
+import { type IDBOptions } from "@zuzjs/hooks"
 import packageJson from "../package.json"
 import { DB } from "./types"
 

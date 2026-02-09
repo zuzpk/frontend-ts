@@ -1,4 +1,5 @@
-import { Box, Button, Icon, Text, TRANSITION_CURVES, TRANSITIONS, useDelayed, Variant } from '@zuzjs/ui';
+import { useDelayed } from '@zuzjs/hooks';
+import { Box, Button, Icon, Text, TRANSITION_CURVES, TRANSITIONS, Variant } from '@zuzjs/ui';
 import React from 'react';
 
 type DoneProps = {

@@ -6,7 +6,8 @@ import { Store } from "@/store"
 import { User } from "@/types"
 import { withPost } from "@zuzjs/core"
 import { useStore } from "@zuzjs/store"
-import { Avatar, Box, Button, ColorScheme, ContextMenu, ContextMenuHandler, css, Icon, Image, SheetHandler, Spinner, Text, TRANSITION_CURVES, TRANSITIONS, useContextMenu, useDB, useDelayed } from "@zuzjs/ui"
+import { Avatar, Box, Button, ColorScheme, ContextMenu, ContextMenuHandler, css, Icon, Image, SheetHandler, Spinner, Text, TRANSITION_CURVES, TRANSITIONS, useContextMenu } from "@zuzjs/ui"
+import { useDB, useDelayed } from "@zuzjs/hooks"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useRef } from "react"
@@ -77,8 +78,8 @@ const Header = () => {
                     parent={userMenuParent.current!} />
                 </>
             : <>
-                <Link href={{ pathname: "/u/signin" }} className={css(`ml:20 mr:1 tdn p:4,10 border:1,$button-link-border,solid s:16 r:20,0,0,20 bg:$button-link &hover(bg:$primary border:1,$primary,solid c:fff scale:1.1) anim:0.1s`)}>Sign in</Link>
-                <Link href={{ pathname: "/u/signup" }} className={css(`tdn p:4,10 border:1,$button-link-border,solid s:16 r:0,20,20,0 bg:$button-link &hover(bg:$primary border:1,$primary,solid c:fff scale:1.1) anim:0.1s`)}>Create Account</Link>
+                <Link href={{ pathname: "/u/signin" }} className={css(`bg:$surface tdn p:6,10 r:$radius-lg,0,0,$radius-lg anim:0.1s &hover(bg:$primary scale:1.05)`)}>Sign in</Link>
+                <Link href={{ pathname: "/u/signup" }} className={css(`ml:1 bg:$surface tdn p:6,10 r:0,$radius-lg,$radius-lg,0 anim:0.1s &hover(bg:$primary scale:1.05)`)}>Create Account</Link>
             </>}
             <ColorScheme as={`ml:20`} />
 

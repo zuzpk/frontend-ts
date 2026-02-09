@@ -1,7 +1,9 @@
 "use client"
 import Done from '@/app/done';
+import { dynamic } from '@zuzjs/core';
+import { useMounted } from '@zuzjs/hooks';
 import { useStore } from '@zuzjs/store';
-import { Box, Button, dynamicObject, Form, FORMVALIDATION, Password, Text, TRANSITION_CURVES, TRANSITIONS, useMounted, Variant } from '@zuzjs/ui';
+import { Box, Button, Form, FORMVALIDATION, Group, Password, Text, TRANSITION_CURVES, TRANSITIONS, Variant } from '@zuzjs/ui';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useMemo, useState } from 'react';
 
@@ -15,11 +17,11 @@ const Update : React.FC = (_props) => {
         when: mounted,
         duration: 0.5
     }), [mounted])
-    const { token } = useStore<dynamicObject>(`app`)
+    const { token } = useStore<dynamic>(`app`)
     const router = useRouter();
     const [ done, setDone ] = useState(null)
 
-    const onSuccess = (resp: dynamicObject) => {
+    const onSuccess = (resp: dynamic) => {
         setDone(resp.name)
     }
 
@@ -29,7 +31,8 @@ const Update : React.FC = (_props) => {
         }
     }, [])
 
-    return <Box as={`minH:calc[100vh - 150px] flex aic jcc`}>
+    return <Group 
+        as={`h:100vh w:50vw bg:$surface abs abc flex aic jcc p:150 cols gap:15`}>
         { done ? <Done
             type={`success`}
             title={`Good Job, ${done}`} 
@@ -43,17 +46,17 @@ const Update : React.FC = (_props) => {
                 repassw: `Passwords do not match`
             }}
             withData={{ token }}
-            as={`flex aic jcc cols w:400 gap:12`}>
+            as={`flex cols w:320 gap:12`}>
             
-            <Text fx={{ ...anim, delay: 0.1 }} as={`s:30 b:900 mb:30`}>New Password</Text>
+            <Text as={`s:20 b:700 mb:10`}>New Password</Text>
 
-            <Password variant={Variant.Medium} name={`passw`} placeholder={`New Password`} fx={{ ...anim, delay: 0.2 }} required />
-            <Password variant={Variant.Medium} name={`repassw`} placeholder={`Repeat Password`} fx={{ ...anim, delay: 0.2 }} required with={`match@passw` as FORMVALIDATION.Pattern} />
+            <Password variant={Variant.Medium} name={`passw`} placeholder={`New Password`} required />
+            <Password variant={Variant.Medium} name={`repassw`} placeholder={`Repeat Password`} required with={`${FORMVALIDATION.MatchField}@passw` } />
 
-            <Button variant={Variant.Medium} type={`submit`} as={`mt:25`} fx={{ ...anim, delay: 0.35 }}>Continue</Button>
+            <Button variant={Variant.Medium} type={`submit`} as={`mt:25 bold`}>Continue</Button>
 
         </Form>}
-    </Box>
+    </Group>
 }
 
 export default Update

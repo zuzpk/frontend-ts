@@ -2,12 +2,12 @@
 import { FB_PIXEL_ID, GA_MEASUREMENT_ID } from "@/config";
 import { AppStore, Store } from "@/store";
 import createStore from "@zuzjs/store";
-import { Box, ToastProvider, useFacebookPixel, useGoogleTagManager } from "@zuzjs/ui";
-import "@zuzjs/ui/styles";
+import { Box, DialogProvider, ToastProvider } from "@zuzjs/ui";
 import { ReactNode, useEffect } from "react";
 import Header from "./header";
 import Authenticate from "./oauth";
 import PushNotifications from "./webpush";
+import { useFacebookPixel, useGoogleTagManager } from "@zuzjs/hooks";
 
 const Wrapper = ({ children } : Readonly<{ children: ReactNode; }>) => {
 
@@ -29,16 +29,18 @@ const Main = ({ children } : { children: ReactNode }) => {
     }, []);
 
     return <ToastProvider>
-        <Provider>
-            <UserProvider>
-                <Box as={`app flex minH:100vh cols`}>
-                    <Authenticate />
-                    <PushNotifications />
-                    <Header />
-                    {children}
-                </Box>
-            </UserProvider>
-        </Provider>
+        <DialogProvider>
+            <Provider>
+                <UserProvider>
+                    <Box as={`app flex minH:100vh cols`}>
+                        <Authenticate />
+                        <PushNotifications />
+                        <Header />
+                        {children}
+                    </Box>
+                </UserProvider>
+            </Provider>
+        </DialogProvider>
     </ToastProvider>
 
 }

@@ -1,6 +1,7 @@
 "use client"
 import { ADMIN_EMAIL } from '@/config';
-import { Box, Button, Span, Text, TRANSITION_CURVES, TRANSITIONS, useDelayed, Variant } from '@zuzjs/ui';
+import { useDelayed } from '@zuzjs/hooks';
+import { Box, Button, Span, Text, TRANSITION_CURVES, TRANSITIONS, Variant } from '@zuzjs/ui';
 import React, { ReactNode } from 'react';
 
 type ErrorProps = {

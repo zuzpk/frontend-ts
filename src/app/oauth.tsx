@@ -3,7 +3,7 @@ import { LocalDB, SESS_ID } from '@/config';
 import { Store } from '@/store';
 import { User } from '@/types';
 import { useStore } from '@zuzjs/store';
-import { useDB } from '@zuzjs/ui';
+import { useDB } from '@zuzjs/hooks';
 import Cookies from "js-cookie";
 import React, { useEffect } from 'react';
 
