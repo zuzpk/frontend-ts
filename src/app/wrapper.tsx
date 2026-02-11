@@ -2,7 +2,7 @@
 import { FB_PIXEL_ID, GA_MEASUREMENT_ID } from "@/config";
 import { AppStore, Store } from "@/store";
 import createStore from "@zuzjs/store";
-import { Box } from "@zuzjs/ui";
+import { Box, LayersProvider } from "@zuzjs/ui";
 import { ReactNode, useEffect } from "react";
 import Header from "./header";
 import Authenticate from "./oauth";
@@ -30,12 +30,14 @@ const Main = ({ children } : { children: ReactNode }) => {
 
     return <Provider>
         <UserProvider>
-            <Box as={`app flex minH:100vh cols`}>
-                <Authenticate />
-                <PushNotifications />
-                <Header />
-                {children}
-            </Box>
+            <LayersProvider>
+                <Box as={`app flex minH:100vh cols`}>
+                    <Authenticate />
+                    <PushNotifications />
+                    <Header />
+                    {children}
+                </Box>
+            </LayersProvider>
         </UserProvider>
     </Provider>
 
