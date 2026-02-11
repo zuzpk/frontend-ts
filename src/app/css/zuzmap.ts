@@ -70,6 +70,7 @@ export const zuzMap: Record<string, string> = {
   "mt:50": "zm00jzbt",
   "&hover(bg:$primary-hover)": "zb00a33v",
   "minH:100vh": "zm00auef",
+  "w:100": "zw00cap3",
   "w:320": "zw007g17",
   "gap:12": "zg00ebip",
   "s:20": "zf00kcc7",
