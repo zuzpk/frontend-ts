@@ -1,8 +1,8 @@
 "use client"
 import "@/app/css/app.scss";
-import { setZuzMap, ThemeProvider, TRANSITION_CURVES, TRANSITIONS, Variant } from "@zuzjs/ui";
-import Wrapper from "./wrapper";
+import { setZuzMap, SPINNER, ThemeProvider, TRANSITION_CURVES, TRANSITIONS, Variant } from "@zuzjs/ui";
 import { zuzMap } from "./css/zuzmap";
+import Wrapper from "./wrapper";
 
 setZuzMap(zuzMap)
 
@@ -19,18 +19,27 @@ const RootLayout = ({ children, }: Readonly<{ children: React.ReactNode; }>) => 
           zuzMap={zuzMap}
           variant={Variant.Medium}
           group={{
-            fx: {
+              fx: {
+                transition: TRANSITIONS.SlideInBottom,
+                curve: TRANSITION_CURVES.Liquid
+              },
+              fxStep: 0.1,
+              fxDelay: 0.1
+            }}
+            spinner={{
+              type: SPINNER.Roller
+            }}
+            toast={{
+              curve: TRANSITION_CURVES.Liquid
+            }}
+            drawer={{
+              margin: 20,
+              speed: .3
+            }}
+            dialog={{
               transition: TRANSITIONS.SlideInBottom,
-              curve: TRANSITION_CURVES.Liquid,
-              duration: 0.75
-            },
-            fxDelay: 0.1,
-            fxStep: 0.1,
-          }}
-          dialog={{
-            transition: TRANSITIONS.SlideInBottom,
-            curve: TRANSITION_CURVES.Liquid
-          }}>
+              curve: TRANSITION_CURVES.Liquid
+            }}>
           <Wrapper>{children}</Wrapper>
         </ThemeProvider>
       </body>

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
-import { VAPID_PUBLIC_KEY } from '@/config';
-import { withPost } from '@zuzjs/core';
+import { getCookie, withPost } from '@zuzjs/core';
 import { usePushNotifications } from '@zuzjs/hooks';
 import React, { useEffect } from 'react';
 
 const PushNotifications : React.FC = (_props) => {
+
+    const VAPID_PUBLIC_KEY = getCookie(`__push`)
 
     const {
         permission,
@@ -23,7 +24,7 @@ const PushNotifications : React.FC = (_props) => {
                 withPost<{
                     kind: string
                 }>(
-                    `/_/u/push_oauth`,
+                    `/@/u/push_oauth`,
                     { token: meta }
                 )
                 .then(() => {})

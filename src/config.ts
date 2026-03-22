@@ -8,9 +8,10 @@ export const APP_DESCRIPTION = "Nextjs Boilerplate"
 export const APP_URL = "http://cms.zuz.com.pk/"
 export const API_URL = "http://localhost:3001/@/"
 export const APP_VERSION = packageJson.version
-export const SESS_ID = `ui`
 export const GA_MEASUREMENT_ID : string | null = null;
 export const FB_PIXEL_ID : string | null = null;
+
+export const SESS_NAME : string = `${APP_NAME.toLowerCase()}.sid`
 
 export const ADMIN_EMAIL = `hello@zuz.com.pk`;
 
@@ -36,5 +37,3 @@ export const LocalDB = {
         ]
     } satisfies IDBOptions
 }
-
-export const VAPID_PUBLIC_KEY = `BECsVJoeWAxJO4zcmvgIUyIielyhcvoel-Kth3sIlT4v1J_WWZsN89L2xoHUjR_hoRlK85d3kYJLuPsc4H21ypc`

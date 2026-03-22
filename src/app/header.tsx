@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
-import { APP_NAME, APP_VERSION, LocalDB } from "@/config"
+import { APP_NAME, LocalDB } from "@/config"
 import { Store } from "@/store"
 import { User } from "@/types"
 import { withPost } from "@zuzjs/core"
-import { useStore } from "@zuzjs/store"
-import { Avatar, Box, Button, ColorScheme, ContextMenu, ContextMenuHandler, css, Icon, Image, SheetHandler, Spinner, Text, TRANSITION_CURVES, TRANSITIONS, useContextMenu } from "@zuzjs/ui"
 import { useDB, useDelayed } from "@zuzjs/hooks"
+import { useStore } from "@zuzjs/store"
+import { Avatar, Box, Button, ColorScheme, ContextMenu, ContextMenuHandler, css, Icon, Image, SheetHandler, Spinner, Text, useContextMenu } from "@zuzjs/ui"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useCallback, useRef } from "react"
@@ -45,16 +45,13 @@ const Header = () => {
         `header flex aic p:40,25 rel zIndex:99 &ph(p:20) h:70`,
     ]}>
         <Box as={`logo flex aic flex:1`}>
-            <Link href={`/` as any} className={css(`tdn`)}><Box as={`app-logo rel flex aic jcc gap:4`} fx={{
-                transition: TRANSITIONS.SlideInLeft,
-                duration: .5,
-                when: mounted,
-                curve: TRANSITION_CURVES.Spring,
-            }}>
+            <Link href={`/` as any} className={css(`tdn`)}><Box as={`app-logo rel flex aic jcc gap:4 -fx`}>
                 <Image src="/imgs/zuz-logo.png" alt={APP_NAME} as={`w:25`} />
-                <Text as={`s:18 b:900`}>{APP_NAME}</Text>
-                <Text as={`s:14 b:900 bg:$button-link r:5 p:1,4,0,4 border:1,$button-link-border,solid`}>UI</Text>
-                <Text as={`s:14 opacity:0.5`}>v{APP_VERSION}</Text>
+                <Text as={`s:18 b:900`} tfx={`fog`}>{APP_NAME}</Text>
+                <Box as={`bg:$surface r:5 p:2,4`}>
+                    <Text tfx={`fog`} as={`s:14 b:900`}>UI</Text>
+                </Box>
+                {/* <Text tfx={`fog`} as={`s:14 opacity:0.5`}>v{APP_VERSION}</Text> */}
             </Box></Link>
         </Box> 
 

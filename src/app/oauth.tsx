@@ -1,30 +1,38 @@
 "use client"
-import { LocalDB, SESS_ID } from '@/config';
+import { LocalDB } from '@/config';
 import { Store } from '@/store';
-import { User } from '@/types';
-import { useStore } from '@zuzjs/store';
+import { DB, User } from '@/types';
+import { getCookie, removeCookie } from '@zuzjs/core';
 import { useDB } from '@zuzjs/hooks';
-import Cookies from "js-cookie";
+import { useStore } from '@zuzjs/store';
 import React, { useEffect } from 'react';
 
 const Authenticate : React.FC = (_props) => {
 
-    const { getByID } = useDB(LocalDB.You)
+    const { getByID, update, insert } = useDB(LocalDB.You)
     const { dispatch } = useStore<User>(Store.User)
+    
+    useEffect(() => {
+        const you = getCookie(`__ud`, true)
+        if ( you ){
+            try{
+                getByID<User>(`you`, you.ID)
+                .then((you) => {
+                    update(DB.You, you)
+                    dispatch({ ...you, loading: false })
+                    removeCookie(`__ud`)
+                })
+                .catch((_err) => {
+                    insert(DB.You, you)
+                    dispatch({ ...you, loading: false })
+                    removeCookie(`__ud`)
+                })
+            }
+            catch(e){
 
-    const oauth = async () => {
-
-        getByID<User>(`you`, Cookies.get(SESS_ID)!)
-            .then((you) => {
-                dispatch({ ...you, loading: false })
-            })
-            .catch((_err) => {
-                dispatch({ loading: false, ID: null })
-            })
-
-    }
-
-    useEffect(() => { oauth() }, [])
+            }
+        }
+    }, [])
 
     return null
 }
