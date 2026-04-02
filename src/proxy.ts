@@ -1,24 +1,17 @@
-// import { cookies } from 'next/headers';
-import { withGet } from '@zuzjs/core';
-import { cookies } from 'next/headers';
-import { NextRequest, NextResponse } from 'next/server';
-import { SESS_NAME } from './config';
-import { User } from './types';
+import { withGet } from "@zuzjs/core";
+import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
+import { AUTH_USER_HEADER, SESS_NAME } from "./config";
+import { User } from "./types";
 
 const routes = {
     private: [
-        "/hub",
-        "/teams",
-        "/backup",
-        "/snapshot",
-        "/sync",
-        "/app",
-        "/servers",
-        "/storage"
+        "/hub"
     ],
     public: [
         `/u`
-    ]
+    ],
+    shared: []
 }
 
 export async function proxy(req: NextRequest) {
@@ -27,6 +20,7 @@ export async function proxy(req: NextRequest) {
     
     const isPrivate = routes.private.some(path => pathname.startsWith(path));
     const isPublic = routes.public.some(path => pathname.startsWith(path));
+    const isShared = routes.shared.some(path => pathname.startsWith(path));
 
     const auth = (await cookies()).get(SESS_NAME)
 
@@ -51,19 +45,24 @@ export async function proxy(req: NextRequest) {
     )
     .catch(err => {})
 
+    const requestHeaders = new Headers(req.headers)
+    
     if ( !oauth ){
         return NextResponse.next()
     }
 
-    let response: NextResponse;
+    let response: NextResponse = NextResponse.next({
+        request: {
+            headers: requestHeaders,
+        },
+    });
 
     if ( 
         oauth.kind &&
-        (pathname == `/` || isPublic)
+        (pathname == `/` || (isPublic && !isShared))
     ){
         response = NextResponse.redirect(new URL(`/hub?_=${Date.now()}`, req.url))
     }
-
     else if ( 
         !oauth.kind && 
         isPrivate
@@ -74,24 +73,20 @@ export async function proxy(req: NextRequest) {
         response = NextResponse.next()
     }
 
-    
-    if (oauth.kind && oauth.you) {
-        response.cookies.set('__ud', JSON.stringify(oauth.you), {
-            path: '/',
-            maxAge: 60 * 60,
-            sameSite: 'lax',
-            httpOnly: false
-        });
-        response.cookies.set('__push', oauth.push_pk, {
-            path: '/',
-            maxAge: 60 * 60 * 24 * 365,
-            sameSite: 'lax',
-            httpOnly: false
-        });
+    if ( oauth.kind ){
+        
+        requestHeaders.set(AUTH_USER_HEADER, JSON.stringify(oauth.you))
+        if (!response.headers.get('location')) {
+            response = NextResponse.next({
+                request: {
+                    headers: requestHeaders,
+                },
+            })
+        }
     }
-    
+
     return response
-    
+
 }
 
 export const config = {

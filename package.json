@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@types/js-cookie": "3.0.6",
-    "@zuzjs/core": "^0.3.10",
-    "@zuzjs/hooks": "^0.1.17",
+    "@zuzjs/core": "^0.3.15",
+    "@zuzjs/hooks": "^0.1.19",
     "@zuzjs/store": "^0.1.6",
-    "@zuzjs/ui": "^1.0.54",
+    "@zuzjs/ui": "^1.0.60",
     "js-cookie": "^3.0.5",
     "next": "16.2.1",
     "react": "^19.2.3",

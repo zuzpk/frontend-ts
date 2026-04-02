@@ -12,13 +12,13 @@ export const GA_MEASUREMENT_ID : string | null = null;
 export const FB_PIXEL_ID : string | null = null;
 
 export const SESS_NAME : string = `${APP_NAME.toLowerCase()}.sid`
-
+export const AUTH_USER_HEADER : string = `x-auth-user`
 export const ADMIN_EMAIL = `hello@zuz.com.pk`;
 
 export const REDIRECT_AFTER_OAUTH = `/`;
 
 export const LocalDB = {
-    You: {
+    App: {
         name: APP_NAME.toLowerCase(),
         version: +APP_VERSION.replace(/\./g, ``),
         meta: [
